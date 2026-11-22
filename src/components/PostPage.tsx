@@ -18,6 +18,13 @@ export default function PostPage() {
 
     // 非同期関数を定義する
     const fetcher = async () => {
+
+      // 記事IDの変更時に、前の記事データ・エラーを
+      // リセットして読み込み状態に戻す
+      setIsLoading(true);
+      setError("");
+      setPost(null);
+
       try {
         if (!id) {
           throw new Error("記事IDがありません");
